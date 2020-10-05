@@ -1,0 +1,23 @@
+{% extends 'inventory/header.html' %}
+
+<body>
+	{% block after_header %}
+	<div class="container" style="vertical-align: middle; position: absolute;  top: 30%; left:30%">
+		<div class="row align-items-center">
+			<div class="column pr-4">
+				<img src="{{ item.image.url }}" class="img-thumbnail" style="width:250px;height:200px;">
+			</div>
+			<div class="column pl-4">
+				<h1>{{ item.name }}</h1>
+				<h3> Description : {{ item.description }}</h3>
+				<p> Price : {{ item.price }}</p>
+			</div>
+		</div>
+		<div class = "row align-items-center"> 
+			<a href="../" type="button" class=" align-items-center btn btn-danger offset-md-3 col-md-2">Back to Main Menu</a>
+		</div>
+		
+	</div>
+	
+	{% endblock %}
+</body>

@@ -1,0 +1,73 @@
+{% extends 'inventory/header.html' %}
+<body>
+	{% block after_header %}
+	
+	<h1 class="text-center">Inventory Pannel</h1>
+	<div class="container">
+		<div class="row box">
+			<div class="column col-md-4 ">
+			<form action="" method="post" enctype="multipart/form-data">  {% csrf_token %}
+			<!-- Form Name -->
+			<table class="table text-center " style="border-style:dashed; background-color: white;">
+			  <thead class="thead-dark">
+			  	<tr>
+			  		<th colspan="2"><legend class="text-center">Add to Inventory</legend></th>
+			  	</tr>
+			    <tr>
+			      <td scope="col">Name</td>
+			      <td scope="col">{{form.name}}</td>
+			    </tr>
+			    <tr>
+			      <td scope="col">Price</td>
+			      <td scope="col">{{form.price}}</td>
+			    </tr>
+			    <tr>
+			      <td scope="col">Description</td>
+			      <td scope="col">{{form.description}}</td>
+			    </tr>
+			    <tr>
+			      <td scope="col">Image</td>
+			      <td scope="col">{{form.image}}</td>
+			    </tr>
+			    <tr>
+			    	<td colspan="2"><button id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Send">Save</button></td>
+			    </tr>
+			  </thead>
+			</table>
+			</form>
+			</div>
+			<div class="column col-md-8">
+				<div class="container text-center col-md-8">
+					<legend>Your Inventory</legend>
+					<table class="table text-center" style="border-style:dashed; background-color: white;">
+					  <thead class="thead-dark">
+					    <tr>
+					      <th scope="col">ID</th>
+					      <th scope="col">Name</th>
+					      <th scope="col">Price</th>
+					      <th scope="col">Detail Page Link</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	{% for item in all_inventory %}
+					    <tr>
+					      <th scope="row">{{ item.id }}</th>
+					      <td>{{ item.name }}</td>
+					      <td>{{ item.price }}</td>
+					      <td>
+					      	<a href="{{ item.id }}" >
+							    View Details</a>
+							</td>
+					    </tr>
+					    {% endfor %}
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		
+	{% endblock %}
+
+</body>
